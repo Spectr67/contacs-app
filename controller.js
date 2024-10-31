@@ -1,9 +1,9 @@
 function handleAddContact(contact) {
-  parseForm(contact)
   model.addContact(contact)
   renderContacts(model.getContacts())
-  console.log(contmodel.getContacts())
 }
+
+function handleRenderContactDetail(id) {}
 
 function handleRemoveContact(id) {
   model.removeContactById(id)
@@ -12,7 +12,7 @@ function handleRemoveContact(id) {
 }
 
 function handleUpdateContact(contactId, newContact) {
-  let id = +contactId;
+  let id = +contactId
   model.updateContactById(id, newContact)
   renderContacts(model.getContacts())
 }

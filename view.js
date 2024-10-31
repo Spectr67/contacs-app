@@ -1,47 +1,50 @@
 function parseForm(elForm) {
- 
-  console.log(elForm)
   const entries = Array.from(elForm.querySelectorAll('input'))
-    
-    .map(elInput => [
-      elInput.name,
-      elInput === 'checkbox'
-        ? elInput.checked
-        : elInput.type === 'number'
-        ? +elInput.value
-        : elInput.value,
-    ])
+  .map(elInput => [
+    elInput.name,
+    elInput === 'checkbox'
+      ? elInput.checked
+      : elInput.type === 'number'
+      ? +elInput.value
+      : elInput.value,
+  ])
   return Object.fromEntries(entries)
 }
-
 
 function onClickAddContact(e) {
   e.preventDefault()
   const contact = parseForm(e.target.closest('form'))
-  handleAddContact(contact)
 
+  handleAddContact(contact)
 }
 
-const elButtonAddContact = document.querySelector("#appAddContact")
-console.log(elButtonAddContact)
+const elButtonAddContact = document.querySelector('#appAddContact')
+
 elButtonAddContact.onclick = onClickAddContact
 
+const elDivButtons = document.querySelector(
+  '.col.s6.right-align.teal-text.text-lighten-5'
+)
 
+const removeButton = elDivButtons.lastElementChild
+removeButton.onclick = onCliclRemoveContact
 
+function onCliclRemoveContact(e) {
+  const el = e.target.closest('.container')
+  console.log(el)
+}
 
-
-
-
-
-
-
-
+function renderContactDetail(contact) {}
 
 function renderContacts(contacts) {
   const elUlContacts = document.querySelector('#app-contacts')
   elUlContacts.innerHTML = ''
   contacts.forEach(contact => {
-    const elLi = generateContactContact(contact.firstName, contact.secondName)
+    const elLi = generateContactContact(
+      contact.firstName,
+      contact.secondName,
+      contact.id
+    )
     elUlContacts.appendChild(elLi)
   })
 }
@@ -75,7 +78,7 @@ function renderSearch(items) {
   })
 }
 
-function generateContactContact(firstName, secondName) {
+function generateContactContact(firstName, secondName, id) {
   const elLi = document.createElement('li')
   const elDivContainer = document.createElement('div')
   const elDivWrapper = document.createElement('div')
@@ -98,7 +101,7 @@ function generateContactContact(firstName, secondName) {
 
   elDivContainer.classList.add('container')
   elDivWrapper.classList.add('row', 'valign-wrapper')
-
+  elDivContainer.setAttribute('id', id)
   elDivCol1.classList.add('col', 's4')
   elDivCol2.classList.add('col', 's4')
   elDivCol3.classList.add('col', 's4')

@@ -3,6 +3,10 @@ const model = {
   contacts: [],
   recentCalls: [],
 
+  getContactId(contact) {
+    return contact.id
+  },
+
   getNextId() {
     return ++this.currentId
   },
@@ -30,8 +34,9 @@ const model = {
   },
 
   addContact(contact) {
-    contact.id = this.getNextId()
-    this.contacts.push(contact)
+    let newContact = contact
+    newContact.id = this.getNextId()
+    this.contacts.push(newContact)
   },
 
   removeContactById(id) {
