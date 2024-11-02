@@ -44,14 +44,11 @@ function handleRemoveFavorite(id) {
   renderFavoriteStatus()
 }
 
-function handleGetContacts() {
-  renderContacts(model.getContacts())
-}
-
-function handleGetRecentCalls() {
-  renderRecentCalls(model.getCallList())
-}
-
-function handleGetFavorites() {
-  renderFavourite(model.getFavourites())
+function handleGetRecentCalls(id) {
+  console.log(id)
+  const numberId = +id
+  const contact = model.getContactById(numberId)
+  console.log(contact)
+  model.addContactCall(contact)
+  // renderRecentCalls(model.getCallList())
 }
