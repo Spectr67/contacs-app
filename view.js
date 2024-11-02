@@ -25,6 +25,16 @@ function parseForm(elForm) {
   ])
   return Object.fromEntries(entries)
 }
+const elLiRecentCall = document.querySelector(
+  '.modal-close.waves-effect.collection-item.avatar.transparent.z-depth-1'
+)
+elLiRecentCall.onclick = onClickDetailRecentCall
+
+function onClickDetailRecentCall(e) {
+  const elLi = e.currentTarget
+  const id = elLi.getAttribute('contact-id')
+  handleGetRecentCalls(id)
+}
 
 // function eTargetGetID(e) ??
 function onClickAddContact(e) {
@@ -54,6 +64,7 @@ function onClickAddFavorite(e) {
 function onClickRemoveFavorite(e) {
   const elDivId = e.target.closest('.wrap-content.contact-detail')
   const id = elDivId.getAttribute('detail-id')
+  console.log(id, 'fsfgs')
   handleRemoveFavorite(id)
 }
 
@@ -127,7 +138,7 @@ function renderRecentCalls(recentCalls) {
   elUlRecentCalls.innerHTML = ''
 
   recentCalls.forEach(call => {
-    const elLi = generateRecentCall(call.name, call.secondsAgo)
+    const elLi = generateRecentCall(call.firstName, call.secondsAgo)
     elUlRecentCalls.appendChild(elLi)
   })
 }

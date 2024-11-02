@@ -23,7 +23,9 @@ const model = {
   getCallList() {
     return this.recentCalls
   },
-
+  addContactCall(contact) {
+    this.recentCalls.push(contact)
+  },
   getFavourites() {
     return this.contacts.filter(contact => contact.isFavourite)
   },
