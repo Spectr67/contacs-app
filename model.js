@@ -7,6 +7,11 @@ const model = {
     return contact.id
   },
 
+  getContactById(id) {
+    const findedContact = this.contacts.find(c => c.id === id)
+    return findedContact
+  },
+
   getNextId() {
     return ++this.currentId
   },
@@ -26,7 +31,7 @@ const model = {
   getContactsByQuery(query) {
     return this.contacts.filter(contact => {
       return (
-        contact.moblieNumber.includes(query) ||
+        contact.phone.includes(query) ||
         contact.firstName.includes(query) ||
         contact.secondName.includes(query)
       )
@@ -60,9 +65,14 @@ const model = {
 const newContact = {
   firstName: 'John',
   secondName: 'Doe',
-  moblieNumber: '123456789',
+  phone: '123456789',
   isFavourite: false,
+  id: 11,
 }
+
+model.addContact(newContact)
+model.getContacts()
+model.getContactById(11)
 
 const newRecentCall = {
   time: 0,

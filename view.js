@@ -1,6 +1,21 @@
+const elButtonAddContact = document.querySelector('#appAddContact')
+const elDivButtons = document.querySelector(
+  '.col.s6.right-align.teal-text.text-lighten-5'
+)
+const elAddFavoriteButton = elDivButtons.querySelector(
+  'span.modal-close:nth-child(1)'
+)
+const elRemoveFavoriteButton = elDivButtons.querySelector(
+  'span.modal-close:nth-child(2)'
+)
+const removeButton = elDivButtons.lastElementChild
+elButtonAddContact.onclick = onClickAddContact
+removeButton.onclick = onClickRemoveContact
+elAddFavoriteButton.onclick = onClickAddFavorite
+elRemoveFavoriteButton.onclick = onClickRemoveFavorite
+
 function parseForm(elForm) {
-  const entries = Array.from(elForm.querySelectorAll('input'))
-  .map(elInput => [
+  const entries = Array.from(elForm.querySelectorAll('input')).map(elInput => [
     elInput.name,
     elInput === 'checkbox'
       ? elInput.checked
@@ -11,30 +26,79 @@ function parseForm(elForm) {
   return Object.fromEntries(entries)
 }
 
+// function eTargetGetID(e) ??
 function onClickAddContact(e) {
   e.preventDefault()
   const contact = parseForm(e.target.closest('form'))
-
   handleAddContact(contact)
 }
 
-const elButtonAddContact = document.querySelector('#appAddContact')
-
-elButtonAddContact.onclick = onClickAddContact
-
-const elDivButtons = document.querySelector(
-  '.col.s6.right-align.teal-text.text-lighten-5'
-)
-
-const removeButton = elDivButtons.lastElementChild
-removeButton.onclick = onCliclRemoveContact
-
-function onCliclRemoveContact(e) {
-  const el = e.target.closest('.container')
-  console.log(el)
+function onClickContactDetail(e) {
+  const elLi = e.currentTarget
+  const id = elLi.getAttribute('contact-id')
+  handleRenderContactDetail(id)
 }
 
-function renderContactDetail(contact) {}
+function onClickRemoveContact(e) {
+  const elDivId = e.target.closest('.wrap-content.contact-detail')
+  const id = elDivId.getAttribute('detail-id')
+  handleRemoveContact(id)
+}
+
+function onClickAddFavorite(e) {
+  const elDivId = e.target.closest('.wrap-content.contact-detail')
+  const id = elDivId.getAttribute('detail-id')
+  handleAddFavorite(id)
+}
+
+function onClickRemoveFavorite(e) {
+  const elDivId = e.target.closest('.wrap-content.contact-detail')
+  const id = elDivId.getAttribute('detail-id')
+  handleRemoveFavorite(id)
+}
+
+const elEditButton = elDivButtons.querySelector('span.modal-close:nth-child(3)')
+// elEditButton.onclick = onClickUpdateContact
+
+// function onClickUpdateContact(e) {
+//   const elDivId = e.target.closest('.wrap-content.contact-detail')
+//   const id = elDivId.getAttribute('detail-id')
+//   const elForm = e.target.closest('form')
+//   // const newContact = parseForm(e.target.closest('form'))
+//   console.log(newContact)
+//   console.log(newContact,id)
+// }
+
+function renderFavoriteStatus(isFav) {
+  const elDivButtons = document.querySelector(
+    '.col.s6.right-align.teal-text.text-lighten-5'
+  )
+  const elAddButton = elDivButtons.querySelector(
+    'span.modal-close:nth-child(1)'
+  )
+  const elRemoveButton = elDivButtons.querySelector(
+    'span.modal-close:nth-child(2)'
+  )
+  if (isFav) {
+    elAddButton.style.display = 'none'
+    elRemoveButton.style.display = 'inline'
+  } else {
+    elAddButton.style.display = 'inline'
+    elRemoveButton.style.display = 'none'
+  }
+}
+
+function renderContactDetail(contact) {
+  const elDivModal2 = document.querySelector('#modal2')
+  const elh5 = elDivModal2.querySelector('h5')
+  const elB = elDivModal2.querySelector('b')
+  const elDivContactDetail = elDivModal2.querySelector(
+    '.wrap-content.contact-detail'
+  )
+  elDivContactDetail.setAttribute('detail-id', contact.id)
+  elh5.innerHTML = contact.firstName + ' ' + contact.secondName
+  elB.innerHTML = contact.phone
+}
 
 function renderContacts(contacts) {
   const elUlContacts = document.querySelector('#app-contacts')
@@ -80,6 +144,7 @@ function renderSearch(items) {
 
 function generateContactContact(firstName, secondName, id) {
   const elLi = document.createElement('li')
+  elLi.onclick = onClickContactDetail
   const elDivContainer = document.createElement('div')
   const elDivWrapper = document.createElement('div')
   const elDivCol1 = document.createElement('div')
@@ -98,10 +163,10 @@ function generateContactContact(firstName, secondName, id) {
 
   elLi.setAttribute('href', '#modal2')
   elLi.setAttribute('id', 'a7ca5816')
+  elLi.setAttribute('contact-id', id)
 
   elDivContainer.classList.add('container')
   elDivWrapper.classList.add('row', 'valign-wrapper')
-  elDivContainer.setAttribute('id', id)
   elDivCol1.classList.add('col', 's4')
   elDivCol2.classList.add('col', 's4')
   elDivCol3.classList.add('col', 's4')

@@ -3,12 +3,19 @@ function handleAddContact(contact) {
   renderContacts(model.getContacts())
 }
 
-function handleRenderContactDetail(id) {}
+function handleRenderContactDetail(id) {
+  const idNumber = +id
+  const contact = model.getContactById(idNumber)
+  renderContactDetail(contact)
+}
 
 function handleRemoveContact(id) {
-  model.removeContactById(id)
-  renderContacts(model.getContacts())
-  renderFavourite(model.getFavourites())
+  const idNumber = +id
+  if (id) {
+    model.removeContactById(idNumber)
+    renderContacts(model.getContacts())
+    renderFavourite(model.getFavourites())
+  }
 }
 
 function handleUpdateContact(contactId, newContact) {
@@ -23,13 +30,18 @@ function handleSearchContact(query) {
 }
 
 function handleAddFavorite(id) {
-  model.addFavouriteById(id)
+  const idNumber = +id
+  model.addFavouriteById(idNumber)
   renderFavourite(model.getFavourites())
+  let isFav = true
+  renderFavoriteStatus(isFav)
 }
 
 function handleRemoveFavorite(id) {
-  model.removeFavouriteById(id)
+  const idNumber = +id
+  model.removeFavouriteById(idNumber)
   renderFavourite(model.getFavourites())
+  renderFavoriteStatus()
 }
 
 function handleGetContacts() {
