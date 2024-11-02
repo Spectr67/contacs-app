@@ -3,10 +3,6 @@ const model = {
   contacts: [],
   recentCalls: [],
 
-  getContactId(contact) {
-    return contact.id
-  },
-
   getContactById(id) {
     const findedContact = this.contacts.find(c => c.id === id)
     return findedContact
@@ -77,10 +73,12 @@ model.getContacts()
 model.getContactById(11)
 
 const newRecentCall = {
-  time: 0,
-  date: 0,
+  phone: '+3333',
+  timestamp: 0,
   duration: 0,
 }
+
+// model.addRecentCall(newRecentCall)
 
 // model.addContact(newContact)
 // console.log(model.getContacts())
