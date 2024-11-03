@@ -1,3 +1,13 @@
+function renderSearch(searchedContacts) {
+  const modal3 = document.querySelector('#modal3')
+  const elUlCollection = modal3.querySelector('.collection')
+  elUlCollection.innerHTML = ''
+  searchedContacts.forEach(contact => {
+    const elLi = generateSearch(contact)
+    elUlCollection.appendChild(elLi)
+  })
+}
+
 function renderFavoriteStatus(isFav) {
   const elDivButtons = document.querySelector(
     '.col.s6.right-align.teal-text.text-lighten-5'
@@ -57,14 +67,5 @@ function renderRecentCalls(recentCalls) {
   recentCalls.forEach(recentCall => {
     const elLi = generateRecentCall(recentCall)
     elUlRecentCalls.appendChild(elLi)
-  })
-}
-
-function renderSearch(searchedContacts) {
-  const elUlCollection = document.querySelector('.collection')
-  elUlCollection.innerHTML = ''
-  searchedContacts.forEach(item => {
-    const elLi = generateSearch(item.name)
-    elUlCollection.appendChild(elLi)
   })
 }

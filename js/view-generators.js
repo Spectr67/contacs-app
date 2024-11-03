@@ -137,7 +137,7 @@ function generateRecentCall(recentCall) {
   return elLi
 }
 
-function generateSearch(name) {
+function generateSearch(contact) {
   const elLi = document.createElement('li')
   const elIcon = document.createElement('i')
   const elTitle = document.createElement('span')
@@ -152,7 +152,7 @@ function generateSearch(name) {
   elPhoneIcon.classList.add('material-icons')
 
   elIcon.textContent = 'assessment'
-  elTitle.textContent = name
+  elTitle.textContent = `${contact.firstName} ${contact.secondName}`
   elDescription.textContent = ' '
   elPhoneIcon.textContent = ' '
 

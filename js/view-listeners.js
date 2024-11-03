@@ -1,10 +1,14 @@
+function onInputSearch() {
+  const searchParam = elIntupSearch.value
+  handleSearchContact(searchParam)
+}
+
 function onClickDetailRecentCall(e) {
   const elLi = e.currentTarget
   const number = elLi.querySelector('span.title').textContent
   handleGetRecentCalls(number)
 }
 
-// function eTargetGetID(e) ??
 function onClickAddContact(e) {
   e.preventDefault()
   const contact = parseForm(e.target.closest('form'))

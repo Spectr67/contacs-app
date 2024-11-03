@@ -1,3 +1,19 @@
+function handleUpdateContact(contactId, newContact) {
+  let id = +contactId
+  model.updateContactById(id, newContact)
+  renderContacts(model.getContacts())
+}
+
+function handleSearchContact(searchParam) {
+  const searchedContacts = model.getContactsByQuery(searchParam)
+  renderSearch(searchedContacts)
+}
+
+function handleGetRecentCalls(number) {
+  model.addContactToRecentCall(number)
+  renderRecentCalls(model.getRecentCalls())
+}
+
 function handleAddContact(contact) {
   model.addContact(contact)
   renderContacts(model.getContacts())
@@ -18,17 +34,6 @@ function handleRemoveContact(id) {
   }
 }
 
-function handleUpdateContact(contactId, newContact) {
-  let id = +contactId
-  model.updateContactById(id, newContact)
-  renderContacts(model.getContacts())
-}
-
-function handleSearchContact(query) {
-  const results = model.getContactsByQuery(query)
-  renderSearch(results)
-}
-
 function handleAddFavorite(id) {
   const idNumber = +id
   model.addFavouriteById(idNumber)
@@ -42,13 +47,4 @@ function handleRemoveFavorite(id) {
   model.removeFavouriteById(idNumber)
   renderFavourite(model.getFavourites())
   renderFavoriteStatus()
-}
-
-function handleGetRecentCalls(id) {
-  console.log(id)
-  const numberId = +id
-  const contact = model.getContactById(numberId)
-  console.log(contact)
-  model.addContactCall(contact)
-  // renderRecentCalls(model.getCallList())
 }
