@@ -1,7 +1,7 @@
 function onClickDetailRecentCall(e) {
   const elLi = e.currentTarget
-  const id = elLi.getAttribute('contact-id')
-  handleGetRecentCalls(id)
+  const number = elLi.querySelector('span.title').textContent
+  handleGetRecentCalls(number)
 }
 
 // function eTargetGetID(e) ??

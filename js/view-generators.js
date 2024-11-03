@@ -93,6 +93,7 @@ function generateFavouriteCol(name) {
 }
 
 function generateRecentCall(recentCall) {
+  console.log(recentCall)
   const elLi = document.createElement('li')
   const elIcon = document.createElement('i')
   const elTitle = document.createElement('span')
@@ -116,8 +117,13 @@ function generateRecentCall(recentCall) {
   elPhoneIcon.classList.add('material-icons')
 
   elIcon.textContent = 'person'
-  elTitleBold.textContent = recentCall.phone
-  elDateIcon.textContent = `${recentCall.secondsAgo} секунд назад`
+  elTitleBold.textContent = recentCall.number
+  elDateIcon.textContent =
+    `${recentCall.secondsAgo} секунд назад,` +
+    ' ' +
+    'длительность' +
+    ' ' +
+    recentCall.duration
   elPhoneIcon.textContent = 'phone'
 
   elTitle.appendChild(elTitleBold)

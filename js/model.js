@@ -16,12 +16,10 @@ const model = {
     return this.contacts
   },
 
-  getCallList() {
+  getRecentCalls() {
     return this.recentCalls
   },
-  addContactCall(contact) {
-    this.recentCalls.push(contact)
-  },
+
   getFavourites() {
     return this.contacts.filter(contact => contact.isFavourite)
   },
@@ -36,14 +34,22 @@ const model = {
     })
   },
 
+  addContactToRecentCall(number) {
+    let contact = {
+      number: number,
+      secondsAgo: Math.floor(Date.now() / 1000),
+      duration: Math.floor(Math.random() * 30) + 1,
+    }
+
+    this.recentCalls.push(contact)
+  },
   addContact(contact) {
     let newContact = contact
     newContact.id = this.getNextId()
     this.contacts.push(newContact)
   },
-
-  removeContactById(id) {
-    this.contacts = this.contacts.filter(contact => contact.id !== id)
+  addFavouriteById(id) {
+    this.updateContactById(id, { isFavourite: true })
   },
 
   updateContactById(id, updatedContact) {
@@ -51,14 +57,18 @@ const model = {
     findedContact && Object.assign(findedContact, updatedContact)
   },
 
-  addFavouriteById(id) {
-    this.updateContactById(id, { isFavourite: true })
+  removeContactById(id) {
+    this.contacts = this.contacts.filter(contact => contact.id !== id)
   },
-
   removeFavouriteById(id) {
     this.updateContactById(id, { isFavourite: false })
   },
 }
+
+model.addContactToRecentCall('4353535')
+model.getRecentCalls()
+const result = model.getRecentCalls()
+result
 
 const newContact = {
   firstName: 'John',
