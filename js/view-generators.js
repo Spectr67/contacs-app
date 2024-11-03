@@ -93,7 +93,6 @@ function generateFavouriteCol(name) {
 }
 
 function generateRecentCall(recentCall) {
-  console.log(recentCall)
   const elLi = document.createElement('li')
   const elIcon = document.createElement('i')
   const elTitle = document.createElement('span')

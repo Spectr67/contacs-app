@@ -1,3 +1,9 @@
+function onClickUpdateContact(e) {
+  const elDivId = e.target.closest('.wrap-content.contact-detail')
+  const id = elDivId.getAttribute('detail-id')
+  handleUpdateContact(id)
+}
+
 function onInputSearch() {
   const searchParam = elIntupSearch.value
   handleSearchContact(searchParam)
@@ -36,6 +42,5 @@ function onClickAddFavorite(e) {
 function onClickRemoveFavorite(e) {
   const elDivId = e.target.closest('.wrap-content.contact-detail')
   const id = elDivId.getAttribute('detail-id')
-  console.log(id, 'fsfgs')
   handleRemoveFavorite(id)
 }

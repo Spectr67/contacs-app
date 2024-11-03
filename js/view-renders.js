@@ -1,3 +1,31 @@
+function renderModal1(contact) {
+  const elModal1 = document.querySelector('#modal1')
+  const elInputFirstName = elModal1.querySelector('#firstName')
+  const elInputSecondName = elModal1.querySelector('#secondName')
+  const elInputPhone = elModal1.querySelector('#phone')
+  const elButtonSave = document.querySelector('#appAddContact')
+  const elButtonReset = document.querySelector('#reset')
+
+  elInputFirstName.value = contact.firstName
+  elInputSecondName.value = contact.secondName
+  elInputPhone.value = contact.phone
+  elButtonSave.innerHTML = 'Save'
+  elButtonSave.onclick = renderModalBack
+  elButtonReset.onclick = renderModalBack
+}
+
+function renderModalBack() {
+  const elModal1 = document.querySelector('#modal1')
+  const elInputFirstName = elModal1.querySelector('#firstName')
+  const elInputSecondName = elModal1.querySelector('#secondName')
+  const elInputPhone = elModal1.querySelector('#phone')
+  const elButtonSave = document.querySelector('#appAddContact')
+  elInputFirstName.value = ''
+  elInputSecondName.value = ''
+  elInputPhone.value = ''
+  elButtonSave.innerHTML = 'Добавить'
+}
+
 function renderSearch(searchedContacts) {
   const modal3 = document.querySelector('#modal3')
   const elUlCollection = modal3.querySelector('.collection')
