@@ -1,4 +1,5 @@
-function renderModal1(contact) {
+function renderModal1EditContact(contact, id) {
+  console.log(contact)
   const elModal1 = document.querySelector('#modal1')
   const elInputFirstName = elModal1.querySelector('#firstName')
   const elInputSecondName = elModal1.querySelector('#secondName')
@@ -10,11 +11,15 @@ function renderModal1(contact) {
   elInputSecondName.value = contact.secondName
   elInputPhone.value = contact.phone
   elButtonSave.innerHTML = 'Save'
-  elButtonSave.onclick = renderModalBack
-  elButtonReset.onclick = renderModalBack
+
+  elButtonSave.onclick = e => renderModalBack(e, id)
+  elButtonReset.onclick = e => renderModalBack(e, id)
 }
 
-function renderModalBack() {
+function renderModalBack(e, id) {
+  e.preventDefault()
+  const newContact = parseForm(e.target.closest('form'))
+  handleUpdateContactEnd(id, newContact)
   const elModal1 = document.querySelector('#modal1')
   const elInputFirstName = elModal1.querySelector('#firstName')
   const elInputSecondName = elModal1.querySelector('#secondName')

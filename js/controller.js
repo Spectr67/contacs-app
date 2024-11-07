@@ -1,12 +1,13 @@
 function handleUpdateContact(id) {
   let idNumber = +id
   const contact = model.getContactById(idNumber)
-  renderModal1(contact)
-
+  renderModal1EditContact(contact, idNumber)
+}
+function handleUpdateContactEnd(id, newContact) {
   model.updateContactById(id, newContact)
   renderContacts(model.getContacts())
+  renderContactDetail(newContact)
 }
-
 function handleSearchContact(searchParam) {
   const searchedContacts = model.getContactsByQuery(searchParam)
   renderSearch(searchedContacts)
