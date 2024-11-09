@@ -16,11 +16,11 @@ document.addEventListener('DOMContentLoaded', function () {
     M.Modal.getInstance(elModal3).open()
     this.focus()
   })
-  const elModal1 = document.querySelector('#modal1')
-  document
-    .querySelector('span.modal-close:nth-child(3)')
-    .addEventListener('click', function () {
-      M.Modal.prototype._handleFocus = () => {}
-      M.Modal.getInstance(elModal1).open()
-    })
+  // const elModal1 = document.querySelector('#modal1')
+  // document
+  //   .querySelector('span.modal-close:nth-child(3)')
+  //   .addEventListener('click', function () {
+  //     M.Modal.prototype._handleFocus = () => {}
+  //     M.Modal.getInstance(elModal1).open()
+  //   })
 })
