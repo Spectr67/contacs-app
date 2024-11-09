@@ -15,6 +15,10 @@ function onClickDetailRecentCall(e) {
   handleGetRecentCalls(number)
 }
 
+function onClickSearchRecentCall(number) {
+
+  handleGetRecentCalls(number)
+}
 function onClickAddContact(e) {
   e.preventDefault()
   const contact = parseForm(e.target.closest('form'))

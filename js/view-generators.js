@@ -136,30 +136,69 @@ function generateRecentCall(recentCall) {
   return elLi
 }
 
+// function generateSearch(contact) {
+//   console.log(contact)
+//   const elLi = document.createElement('li')
+//   const elIcon = document.createElement('i')
+//   const elTitle = document.createElement('span')
+//   const elDescription = document.createElement('p')
+//   const elLink = document.createElement('a')
+//   const elPhoneIcon = document.createElement('i')
+
+//   elLi.classList.add('collection-item', 'avatar')
+//   elIcon.classList.add('material-icons', 'circle', 'green')
+//   elTitle.classList.add('title')
+//   elLink.classList.add('secondary-content')
+//   elPhoneIcon.classList.add('material-icons')
+//   elPhoneIcon.onclick = () => onClickSearchRecentCall(contact.phone)
+//   elIcon.textContent = 'assessment'
+//   elTitle.textContent = `${contact.firstName} ${contact.secondName}`
+//   elDescription.textContent = `${contact.phone}`
+//   elPhoneIcon.textContent = 'phone'
+
+//   elLink.appendChild(elPhoneIcon)
+//   elLi.appendChild(elIcon)
+//   elLi.appendChild(elTitle)
+//   elLi.appendChild(elDescription)
+//   elLi.appendChild(elLink)
+
+//   return elLi
+// }
+function h(tagName, text, attrs, listener, children) {
+  const el = document.createElement(tagName)
+  el.textContent = text
+  el.onclick = listener
+  Object.entries(attrs ?? {}).forEach(attr => {
+    el.setAttribute(attr[0], attr[1])
+  })
+  children?.forEach(child => el.appendChild(child))
+
+  return el
+}
 function generateSearch(contact) {
-  const elLi = document.createElement('li')
-  const elIcon = document.createElement('i')
-  const elTitle = document.createElement('span')
-  const elDescription = document.createElement('p')
-  const elLink = document.createElement('a')
-  const elPhoneIcon = document.createElement('i')
-
-  elLi.classList.add('collection-item', 'avatar')
-  elIcon.classList.add('material-icons', 'circle', 'green')
-  elTitle.classList.add('title')
-  elLink.classList.add('secondary-content')
-  elPhoneIcon.classList.add('material-icons')
-
-  elIcon.textContent = 'assessment'
-  elTitle.textContent = `${contact.firstName} ${contact.secondName}`
-  elDescription.textContent = ' '
-  elPhoneIcon.textContent = ' '
-
-  elLink.appendChild(elPhoneIcon)
-  elLi.appendChild(elIcon)
-  elLi.appendChild(elTitle)
-  elLi.appendChild(elDescription)
-  elLi.appendChild(elLink)
-
-  return elLi
+  return h(
+    'li',
+    '',
+    { class: 'collection-item avatar' },
+    null,
+    [
+      h('i', 'assessment', { class: 'material-icons circle green' }),
+      h('span', `${contact.firstName} ${contact.secondName}`, { class: 'title' }),
+      h('p', `${contact.phone}`),
+      h(
+        'a',
+        '',
+        { class: 'secondary-content' },
+        null,
+        [
+          h(
+            'i',
+            'phone',
+            { class: 'material-icons' },
+            () => onClickSearchRecentCall(contact.phone)
+          )
+        ]
+      )
+    ]
+  )
 }
