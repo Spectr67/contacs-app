@@ -1,3 +1,11 @@
+function onClickOpenModalAddContact() {}
+
+function onClickEditContactConfirm(e) {
+  e.preventDefault()
+  const editedContact = parseForm(e.target.closest('form'))
+  handleConfirmUpdateContact(editedContact.id, editedContact)
+}
+
 function onClickUpdateContact(e) {
   const elDivId = e.target.closest('.wrap-content.contact-detail')
   const id = elDivId.getAttribute('detail-id')
@@ -16,7 +24,6 @@ function onClickDetailRecentCall(e) {
 }
 
 function onClickSearchRecentCall(number) {
-
   handleGetRecentCalls(number)
 }
 function onClickAddContact(e) {

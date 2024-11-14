@@ -1,9 +1,8 @@
 function handleUpdateContact(id) {
-  let idNumber = +id
-  const contact = model.getContactById(idNumber)
-  renderModal1EditContact(contact, idNumber)
+  const contact = model.getContactById(+id)
+  renderModal1EditContact(contact)
 }
-function handleUpdateContactEnd(id, newContact) {
+function handleConfirmUpdateContact(id, newContact) {
   model.updateContactById(id, newContact)
   renderContacts(model.getContacts())
   renderContactDetail(newContact)
