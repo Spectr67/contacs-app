@@ -175,30 +175,16 @@ function h(tagName, text, attrs, listener, children) {
 
   return el
 }
+
 function generateSearch(contact) {
-  return h(
-    'li',
-    '',
-    { class: 'collection-item avatar' },
-    null,
-    [
-      h('i', 'assessment', { class: 'material-icons circle green' }),
-      h('span', `${contact.firstName} ${contact.secondName}`, { class: 'title' }),
-      h('p', `${contact.phone}`),
-      h(
-        'a',
-        '',
-        { class: 'secondary-content' },
-        null,
-        [
-          h(
-            'i',
-            'phone',
-            { class: 'material-icons' },
-            () => onClickSearchRecentCall(contact.phone)
-          )
-        ]
-      )
-    ]
-  )
+  return h('li', '', { class: 'collection-item avatar' }, null, [
+    h('i', 'assessment', { class: 'material-icons circle green' }),
+    h('span', `${contact.firstName} ${contact.secondName}`, { class: 'title' }),
+    h('p', `${contact.phone}`),
+    h('a', '', { class: 'secondary-content' }, null, [
+      h('i', 'phone', { class: 'material-icons' }, () =>
+        onClickSearchRecentCall(contact.phone)
+      ),
+    ]),
+  ])
 }

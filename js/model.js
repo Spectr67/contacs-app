@@ -37,7 +37,10 @@ const model = {
   addContactToRecentCall(number) {
     let contact = {
       number: number,
-      secondsAgo: Math.floor(Date.now() / 1000),
+      secondsAgo: Date.now(),
+      getTimePassed() {
+        return +((Date.now() - this.secondsAgo) / 1000).toFixed(2)
+      },
       duration: Math.floor(Math.random() * 30) + 1,
     }
 

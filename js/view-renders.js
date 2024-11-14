@@ -6,11 +6,14 @@ function renderModal1EditContact(contact, id) {
   const elInputPhone = elModal1.querySelector('#phone')
   const elButtonSave = document.querySelector('#appAddContact')
   const elButtonReset = document.querySelector('#reset')
+  const elh5 = document.querySelector('#modal1  h5')
 
   elInputFirstName.value = contact.firstName
   elInputSecondName.value = contact.secondName
   elInputPhone.value = contact.phone
   elButtonSave.innerHTML = 'Save'
+  elh5.innerHTML = 'Редактировать контакт'
+  console.log(elh5)
 
   elButtonSave.onclick = e => renderModalBack(e, id)
   elButtonReset.onclick = e => renderModalBack(e, id)
