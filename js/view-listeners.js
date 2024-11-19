@@ -1,4 +1,12 @@
-function onClickOpenModalAddContact() {}
+function onClickOpenModalAddContact() {
+  renderModal1AddContact()
+}
+
+function onClickAddContact(e) {
+  e.preventDefault()
+  const contact = parseForm(e.target.closest('form'))
+  handleAddContact(contact)
+}
 
 function onClickEditContactConfirm(e) {
   e.preventDefault()
@@ -25,11 +33,6 @@ function onClickDetailRecentCall(e) {
 
 function onClickSearchRecentCall(number) {
   handleGetRecentCalls(number)
-}
-function onClickAddContact(e) {
-  e.preventDefault()
-  const contact = parseForm(e.target.closest('form'))
-  handleAddContact(contact)
 }
 
 function onClickContactDetail(e) {

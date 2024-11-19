@@ -82,7 +82,7 @@ function generateFavouriteCol(name) {
   )
   elName.classList.add('white-text')
   elName.textContent = name
-  elIcon.textContent = 'preson'
+  elIcon.textContent = name
 
   elCenterAlign.appendChild(elIcon)
   elCardPanel.appendChild(elCenterAlign)

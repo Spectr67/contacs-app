@@ -4,10 +4,12 @@ function renderModal1AddContact() {
   const elInputSecondName = elModal1.querySelector('#secondName')
   const elInputPhone = elModal1.querySelector('#phone')
   const elButtonSave = document.querySelector('#appAddContact')
+  const elh5 = document.querySelector('#modal1  h5')
   elInputFirstName.value = ''
   elInputSecondName.value = ''
   elInputPhone.value = ''
   elButtonSave.innerHTML = 'Добавить'
+  elh5.innerHTML = 'Добавить контакт'
 }
 
 function renderModal1EditContact(contact) {
@@ -28,13 +30,8 @@ function renderModal1EditContact(contact) {
   elButtonSave.innerHTML = 'Сохранить'
   elh5.innerHTML = 'Редактировать контакт'
 
-  // elButtonSave.onclick = e => renderModalBack(e, contact.id)
-  // elButtonReset.onclick = e => renderModalBack(e, contact.id)
-
   elButtonSave.onclick = onClickEditContactConfirm
 }
-
-function renderModalBack(e, id) {}
 
 function renderFavoriteStatus(isFav) {
   const elDivButtons = document.querySelector(

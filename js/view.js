@@ -6,6 +6,7 @@ const elButtonRemove = elDivButtons.querySelector('span:last-child')
 const elLiRecentCall = document.querySelector('#app-recent-calls>.recent-call')
 const elIntupSearch = document.querySelector('#search')
 const elButtonEdit = elDivButtons.querySelector('span.modal-close:nth-child(3)')
+const elFab = document.querySelector('#elFab')
 
 elButtonAddContact.onclick = onClickAddContact
 elButtonRemove.onclick = onClickRemoveContact
@@ -14,3 +15,4 @@ elButtonRemoveFavorite.onclick = onClickRemoveFavorite
 elLiRecentCall.onclick = onClickDetailRecentCall
 elIntupSearch.oninput = onInputSearch
 elButtonEdit.onclick = onClickUpdateContact
+elFab.onclick = onClickOpenModalAddContact
