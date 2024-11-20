@@ -3,9 +3,10 @@ function handleUpdateContact(id) {
   renderModal1EditContact(contact)
 }
 function handleConfirmUpdateContact(id, newContact) {
-  model.updateContactById(id, newContact)
+  console.log(id, newContact)
+  model.updateContactById(+id, newContact)
   renderContacts(model.getContacts())
-  renderContactDetail(newContact)
+  renderContactDetail(model.getContactById(+id))
 }
 function handleSearchContact(searchParam) {
   const searchedContacts = model.getContactsByQuery(searchParam)
@@ -23,8 +24,11 @@ function handleAddContact(contact) {
 }
 
 function handleRenderContactDetail(id) {
+  console.log(id)
   const idNumber = +id
+  console.log(model.contacts)
   const contact = model.getContactById(idNumber)
+  console.log(contact)
   renderContactDetail(contact)
 }
 

@@ -1,16 +1,21 @@
 function onClickOpenModalAddContact() {
+  console.log('onClickOpenModalAddContact')
   renderModal1AddContact()
 }
 
 function onClickAddContact(e) {
+  console.log('onClickAddContact')
   e.preventDefault()
   const contact = parseForm(e.target.closest('form'))
   handleAddContact(contact)
 }
 
 function onClickEditContactConfirm(e) {
+  console.log('onClickEditContactConfirm')
   e.preventDefault()
   const editedContact = parseForm(e.target.closest('form'))
+  console.log('>>>')
+  console.log(editedContact)
   handleConfirmUpdateContact(editedContact.id, editedContact)
 }
 

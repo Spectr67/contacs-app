@@ -56,6 +56,7 @@ const model = {
   },
 
   updateContactById(id, updatedContact) {
+    delete updatedContact.id
     const findedContact = this.contacts.find(contact => contact.id === id)
     findedContact && Object.assign(findedContact, updatedContact)
   },
