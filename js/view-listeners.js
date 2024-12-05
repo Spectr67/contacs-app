@@ -11,8 +11,6 @@ function onClickAddContact(e) {
 function onClickEditContactConfirm(e) {
   e.preventDefault()
   const editedContact = parseForm(e.target.closest('form'))
-  console.log('>>>')
-  console.log(editedContact)
   handleConfirmUpdateContact(editedContact.id, editedContact)
 }
 
@@ -29,12 +27,12 @@ function onInputSearch() {
 
 function onClickDetailRecentCall(e) {
   const elLi = e.currentTarget
-  const number = elLi.querySelector('span.title').textContent
-  handleGetRecentCalls(number)
+  const phoneNumber = elLi.querySelector('span.title').textContent
+  handleGetRecentCalls(phoneNumber)
 }
 
-function onClickSearchRecentCall(number) {
-  handleGetRecentCalls(number)
+function onClickSearchRecentCall(phoneNumber) {
+  handleGetRecentCalls(phoneNumber)
 }
 
 function onClickContactDetail(e) {

@@ -118,7 +118,7 @@ function generateRecentCall(recentCall) {
   elIcon.textContent = 'person'
   elTitleBold.textContent = recentCall.number
   elDateIcon.textContent =
-    `${recentCall.secondsAgo} секунд назад, ` +
+    `${+((Date.now() - recentCall.timestamp) / 1000).toFixed(0)} секунд назад, ` +
     'длительность ' +
     recentCall.duration
   elPhoneIcon.textContent = 'phone'
@@ -136,34 +136,6 @@ function generateRecentCall(recentCall) {
   return elLi
 }
 
-// function generateSearch(contact) {
-//   console.log(contact)
-//   const elLi = document.createElement('li')
-//   const elIcon = document.createElement('i')
-//   const elTitle = document.createElement('span')
-//   const elDescription = document.createElement('p')
-//   const elLink = document.createElement('a')
-//   const elPhoneIcon = document.createElement('i')
-
-//   elLi.classList.add('collection-item', 'avatar')
-//   elIcon.classList.add('material-icons', 'circle', 'green')
-//   elTitle.classList.add('title')
-//   elLink.classList.add('secondary-content')
-//   elPhoneIcon.classList.add('material-icons')
-//   elPhoneIcon.onclick = () => onClickSearchRecentCall(contact.phone)
-//   elIcon.textContent = 'assessment'
-//   elTitle.textContent = `${contact.firstName} ${contact.secondName}`
-//   elDescription.textContent = `${contact.phone}`
-//   elPhoneIcon.textContent = 'phone'
-
-//   elLink.appendChild(elPhoneIcon)
-//   elLi.appendChild(elIcon)
-//   elLi.appendChild(elTitle)
-//   elLi.appendChild(elDescription)
-//   elLi.appendChild(elLink)
-
-//   return elLi
-// }
 function h(tagName, text, attrs, listener, children) {
   const el = document.createElement(tagName)
   el.textContent = text

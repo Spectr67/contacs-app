@@ -4,13 +4,13 @@ function renderModal1AddContact() {
   const elInputSecondName = elModal1.querySelector('#secondName')
   const elInputPhone = elModal1.querySelector('#phone')
   const elButtonSave = document.querySelector('#appAddContact')
-  const elh5 = document.querySelector('#modal1  h5')
+  const elH5 = document.querySelector('#modal1 h5')
   elInputFirstName.value = ''
   elInputSecondName.value = ''
   elInputPhone.value = ''
   elButtonSave.innerHTML = 'Добавить'
   elButtonSave.onclick = onClickAddContact
-  elh5.innerHTML = 'Добавить контакт'
+  elH5.innerHTML = 'Добавить контакт'
 }
 
 function renderModal1EditContact(contact) {
@@ -19,8 +19,7 @@ function renderModal1EditContact(contact) {
   const elInputSecondName = elModal1.querySelector('#secondName')
   const elInputPhone = elModal1.querySelector('#phone')
   const elButtonSave = document.querySelector('#appAddContact')
-  const elButtonReset = document.querySelector('#reset')
-  const elh5 = document.querySelector('#modal1  h5')
+  const elH5 = document.querySelector('#modal1 h5')
 
   const elInputHidden = document.querySelector('[type="hidden"]')
   elInputHidden.value = contact.id
@@ -30,7 +29,7 @@ function renderModal1EditContact(contact) {
   elInputPhone.value = contact.phone
   elButtonSave.innerHTML = 'Сохранить'
   elButtonSave.onclick = onClickEditContactConfirm
-  elh5.innerHTML = 'Редактировать контакт'
+  elH5.innerHTML = 'Редактировать контакт'
 }
 
 function renderFavoriteStatus(isFav) {
