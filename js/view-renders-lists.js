@@ -15,7 +15,7 @@ function renderFavourite(favourites) {
   const elDivFavorites = document.querySelector('#app-favorites')
   elDivFavorites.innerHTML = ''
   favourites.forEach(favorite => {
-    const elDivFavorite = generateFavouriteCol(favorite.name)
+    const elDivFavorite = generateFavouriteCol(favorite.firstName)
     elDivFavorites.appendChild(elDivFavorite)
   })
 }

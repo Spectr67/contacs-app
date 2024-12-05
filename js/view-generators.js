@@ -82,7 +82,7 @@ function generateFavouriteCol(name) {
   )
   elName.classList.add('white-text')
   elName.textContent = name
-  elIcon.textContent = name
+  elIcon.textContent = 'person'
 
   elCenterAlign.appendChild(elIcon)
   elCardPanel.appendChild(elCenterAlign)
@@ -118,10 +118,8 @@ function generateRecentCall(recentCall) {
   elIcon.textContent = 'person'
   elTitleBold.textContent = recentCall.number
   elDateIcon.textContent =
-    `${recentCall.secondsAgo} секунд назад,` +
-    ' ' +
-    'длительность' +
-    ' ' +
+    `${recentCall.secondsAgo} секунд назад, ` +
+    'длительность ' +
     recentCall.duration
   elPhoneIcon.textContent = 'phone'
 
@@ -132,6 +130,8 @@ function generateRecentCall(recentCall) {
   elLi.appendChild(elTitle)
   elLi.appendChild(elDate)
   elLi.appendChild(elLink)
+
+  elLi.onclick = onClickDetailRecentCall
 
   return elLi
 }

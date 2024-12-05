@@ -8,7 +8,7 @@ function renderModal1AddContact() {
   elInputFirstName.value = ''
   elInputSecondName.value = ''
   elInputPhone.value = ''
-  elButtonSave.innerHTML = 'Добавить1'
+  elButtonSave.innerHTML = 'Добавить'
   elButtonSave.onclick = onClickAddContact
   elh5.innerHTML = 'Добавить контакт'
 }
@@ -31,7 +31,6 @@ function renderModal1EditContact(contact) {
   elButtonSave.innerHTML = 'Сохранить'
   elButtonSave.onclick = onClickEditContactConfirm
   elh5.innerHTML = 'Редактировать контакт'
-
 }
 
 function renderFavoriteStatus(isFav) {
