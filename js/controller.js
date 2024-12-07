@@ -12,8 +12,8 @@ function handleSearchContact(searchParam) {
   renderSearch(searchedContacts)
 }
 
-function handleGetRecentCalls(number) {
-  model.addContactToRecentCall(number)
+function handleGetRecentCalls(number, name) {
+  model.addContactToRecentCall(number, name)
   renderRecentCalls(model.getRecentCalls())
 }
 
@@ -22,6 +22,7 @@ function handleAddContact(contact) {
     return
   }
   model.addContact(contact)
+  renderFavoriteStatus()
   renderContacts(model.getContacts())
 }
 

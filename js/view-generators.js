@@ -56,7 +56,7 @@ function generateContactContact(firstName, secondName, id) {
   return elLi
 }
 
-function generateFavouriteCol(name) {
+function generateFavouriteCol(favorite) {
   const elDivFavorite = document.createElement('div')
   const elCardPanel = document.createElement('div')
   const elCenterAlign = document.createElement('div')
@@ -81,14 +81,14 @@ function generateFavouriteCol(name) {
     'material-symbols-outlined'
   )
   elName.classList.add('white-text')
-  elName.textContent = name
+  elName.textContent = favorite.firstName + ' ' + favorite.secondName
   elIcon.textContent = 'person'
 
   elCenterAlign.appendChild(elIcon)
   elCardPanel.appendChild(elCenterAlign)
   elCardPanel.appendChild(elName)
   elDivFavorite.appendChild(elCardPanel)
-
+  elDivFavorite.onclick = onClickFavouriteRecentCall(favorite)
   return elDivFavorite
 }
 
@@ -116,11 +116,10 @@ function generateRecentCall(recentCall) {
   elPhoneIcon.classList.add('material-icons')
 
   elIcon.textContent = 'person'
-  elTitleBold.textContent = recentCall.number
-  elDateIcon.textContent =
-    `${+((Date.now() - recentCall.timestamp) / 1000).toFixed(0)} секунд назад, ` +
-    'длительность ' +
-    recentCall.duration
+  elTitleBold.textContent = recentCall.number + ' ' + recentCall.name
+  const seconds = Math.floor((Date.now() - recentCall.timestamp) / 1000)
+  elDateIcon.textContent = `${seconds} секунд назад, длительность ${recentCall.duration}`
+  recentCall.duration
   elPhoneIcon.textContent = 'phone'
 
   elTitle.appendChild(elTitleBold)
@@ -149,13 +148,14 @@ function h(tagName, text, attrs, listener, children) {
 }
 
 function generateSearch(contact) {
+  const name = contact.firstName + ' ' + contact.secondName
   return h('li', '', { class: 'collection-item avatar' }, null, [
     h('i', 'assessment', { class: 'material-icons circle green' }),
     h('span', `${contact.firstName} ${contact.secondName}`, { class: 'title' }),
     h('p', `${contact.phone}`),
     h('a', '', { class: 'secondary-content' }, null, [
       h('i', 'phone', { class: 'material-icons' }, () =>
-        onClickSearchRecentCall(contact.phone)
+        onClickSearchRecentCall(contact.phone, name)
       ),
     ]),
   ])

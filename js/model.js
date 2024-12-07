@@ -17,7 +17,7 @@ const model = {
   },
 
   getRecentCalls() {
-    return this.recentCalls
+    return this.recentCalls.reverse()
   },
 
   getFavourites() {
@@ -25,15 +25,17 @@ const model = {
   },
 
   getContactsByQuery(query) {
-    return this.contacts.filter(contact => 
-      contact.phone.includes(query) ||
-      contact.firstName.includes(query) ||
-      contact.secondName.includes(query)
+    return this.contacts.filter(
+      contact =>
+        contact.phone.includes(query) ||
+        contact.firstName.includes(query) ||
+        contact.secondName.includes(query)
     )
   },
 
-  addContactToRecentCall(number) {
+  addContactToRecentCall(number, name) {
     const recentCall = {
+      name: name,
       number: number,
       timestamp: Date.now(),
       duration: Math.floor(Math.random() * 30) + 1,
@@ -59,7 +61,7 @@ const model = {
   removeContactById(id) {
     this.contacts = this.contacts.filter(contact => contact.id !== id)
   },
-  
+
   removeFavouriteById(id) {
     this.updateContactById(id, { isFavourite: false })
   },

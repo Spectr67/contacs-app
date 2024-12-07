@@ -1,3 +1,12 @@
+function renderModal3() {
+  const modal3 = document.querySelector('#modal3')
+  const elUl = modal3.querySelector('ul')
+  const liElements = elUl.querySelectorAll('li')
+  liElements.forEach(li => {
+    elUl.removeChild(li)
+  })
+}
+
 function renderModal1AddContact() {
   const elModal1 = document.querySelector('#modal1')
   const elInputFirstName = elModal1.querySelector('#firstName')

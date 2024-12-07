@@ -14,5 +14,3 @@ elButtonRemoveFavorite.onclick = onClickRemoveFavorite
 elIntupSearch.oninput = onInputSearch
 elButtonEdit.onclick = onClickUpdateContact
 elFab.onclick = onClickOpenModalAddContact
-
-// empty strings

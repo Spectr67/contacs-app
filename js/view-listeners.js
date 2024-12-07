@@ -1,3 +1,7 @@
+function onClickFavouriteRecentCall(favorite) {
+  handleGetRecentCalls(favorite.phone, favorite.firstName)
+}
+
 function onClickOpenModalAddContact() {
   renderModal1AddContact()
 }
@@ -28,11 +32,13 @@ function onInputSearch() {
 function onClickDetailRecentCall(e) {
   const elLi = e.currentTarget
   const phoneNumber = elLi.querySelector('span.title').textContent
-  handleGetRecentCalls(phoneNumber)
+  const name = document.querySelector('#modal2 h5').textContent
+  console.log(name)
+  handleGetRecentCalls(phoneNumber, name)
 }
 
-function onClickSearchRecentCall(phoneNumber) {
-  handleGetRecentCalls(phoneNumber)
+function onClickSearchRecentCall(phoneNumber, name) {
+  handleGetRecentCalls(phoneNumber, name)
 }
 
 function onClickContactDetail(e) {
