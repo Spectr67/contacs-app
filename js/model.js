@@ -36,9 +36,9 @@ const model = {
   },
 
   addContactToRecentCall(number) {
-    const contact = this.contacts.find(c => c.number === number)
+    const contact = this.contacts.find(c => c.phone === number)
     const recentCall = {
-      nameOrPone: contact ? contact.name : number,
+      nameOrPone: contact ? contact.firstName : number,
       timestamp: Date.now(),
       duration: Math.floor(Math.random() * 30) + 1,
     }
@@ -69,7 +69,17 @@ const model = {
   },
 }
 
-// model.addContact({ name: "John", number: "1234567890" })
+model.addContact({
+  firstName: 'John',
+  secondName: 'Rembo',
+  phone: '1234567890',
+})
+model.addContact({
+  firstName: 'John2',
+  secondName: 'Rembo2',
+  phone: '321',
+})
+
 // model.addContactToRecentCall("1234567890")
 // model.addContactToRecentCall("0987654321")
-// console.log(model.recentCalls)
+console.log(model.recentCalls)

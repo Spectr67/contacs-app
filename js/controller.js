@@ -56,3 +56,4 @@ function handleRemoveFavorite(id) {
   renderFavourite(model.getFavourites())
   renderFavoriteStatus()
 }
+renderContacts(model.getContacts())

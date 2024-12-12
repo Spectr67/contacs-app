@@ -61,6 +61,8 @@ function renderFavoriteStatus(isFav) {
 }
 
 function renderContactDetail(contact) {
+  renderFavoriteStatus(contact.isFavourite)
+
   const elDivModal2 = document.querySelector('#modal2')
   const elh5 = elDivModal2.querySelector('h5')
   const elB = elDivModal2.querySelector('b')
