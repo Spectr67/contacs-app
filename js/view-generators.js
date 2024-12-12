@@ -88,7 +88,7 @@ function generateFavouriteCol(favorite) {
   elCardPanel.appendChild(elCenterAlign)
   elCardPanel.appendChild(elName)
   elDivFavorite.appendChild(elCardPanel)
-  elDivFavorite.onclick = onClickFavouriteRecentCall(favorite)
+  elDivFavorite.onclick = onClickFavouriteRecentCall
   return elDivFavorite
 }
 
@@ -116,7 +116,7 @@ function generateRecentCall(recentCall) {
   elPhoneIcon.classList.add('material-icons')
 
   elIcon.textContent = 'person'
-  elTitleBold.textContent = recentCall.number + ' ' + recentCall.name
+  elTitleBold.textContent = recentCall.nameOrPone
   const seconds = Math.floor((Date.now() - recentCall.timestamp) / 1000)
   elDateIcon.textContent = `${seconds} секунд назад, длительность ${recentCall.duration}`
   recentCall.duration

@@ -1,5 +1,9 @@
-function onClickFavouriteRecentCall(favorite) {
-  handleGetRecentCalls(favorite.phone, favorite.firstName)
+function onClickFavouriteRecentCall() {
+  // console.log(e)
+  // const elDivFavorite = e.target.closest('.favorite')
+  // const elSpanName = elDivFavorite.querySelector('span')
+  // const favorite = [favorite.phone, (favorite.name = elSpanName)]
+  // handleGetRecentCalls(favorite.phone, favorite.firstName)
 }
 
 function onClickOpenModalAddContact() {

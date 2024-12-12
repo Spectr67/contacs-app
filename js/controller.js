@@ -6,14 +6,15 @@ function handleConfirmUpdateContact(id, newContact) {
   model.updateContactById(+id, newContact)
   renderContacts(model.getContacts())
   renderContactDetail(model.getContactById(+id))
+  renderFavourite(model.getFavourites())
 }
 function handleSearchContact(searchParam) {
   const searchedContacts = model.getContactsByQuery(searchParam)
   renderSearch(searchedContacts)
 }
 
-function handleGetRecentCalls(number, name) {
-  model.addContactToRecentCall(number, name)
+function handleGetRecentCalls(number) {
+  model.addContactToRecentCall(number)
   renderRecentCalls(model.getRecentCalls())
 }
 
