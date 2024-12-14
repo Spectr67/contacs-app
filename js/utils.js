@@ -1,10 +1,14 @@
 function parseForm(elForm) {
   const inputs = Array.from(elForm.querySelectorAll('.input-field > input'))
-  // const mapInputs = inputs.map(input => input.value)
   for (const input of inputs) {
     if (input.value === '') {
       return null
     }
+  }
+  const elInputPhone = elForm.querySelector('#phone')
+
+  if (elInputPhone && !/^\d+$/.test(elInputPhone.value)) {
+    return null
   }
 
   const entries = Array.from(elForm.querySelectorAll('input')).map(elInput => [

@@ -17,6 +17,10 @@ function handleGetRecentCalls(number) {
   model.addContactToRecentCall(number)
   renderRecentCalls(model.getRecentCalls())
 }
+function handleRecentCallFromFavorite(name) {
+  model.addContactToRecentCallFromFavorite(name)
+  renderRecentCalls(model.getRecentCalls())
+}
 
 function handleAddContact(contact) {
   if (!contact || Object.keys(contact).length === 0) {

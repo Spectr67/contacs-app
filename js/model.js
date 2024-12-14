@@ -25,14 +25,25 @@ const model = {
   },
 
   getContactsByQuery(query) {
-    return query
-      ? this.contacts.filter(
-          contact =>
-            contact.firstName.includes(query) ||
-            contact.phone.includes(query) ||
-            contact.secondName.includes(query)
-        )
-      : []
+    if (!query) return []
+
+    const lowerCaseQuery = query.toLowerCase()
+
+    return this.contacts.filter(
+      contact =>
+        contact.firstName.toLowerCase().includes(lowerCaseQuery) ||
+        contact.secondName.toLowerCase().includes(lowerCaseQuery) ||
+        contact.phone.toLowerCase().includes(lowerCaseQuery)
+    )
+  },
+
+  addContactToRecentCallFromFavorite(name) {
+    const recentCall = {
+      nameOrPone: name,
+      timestamp: Date.now(),
+      duration: Math.floor(Math.random() * 30) + 1,
+    }
+    this.recentCalls.push(recentCall)
   },
 
   addContactToRecentCall(number) {
@@ -44,7 +55,7 @@ const model = {
     }
     this.recentCalls.push(recentCall)
   },
-  //  ??????????????????
+
   addContact(contact) {
     contact.id = this.getNextId()
     this.contacts.push(contact)
