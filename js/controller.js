@@ -28,6 +28,7 @@ function handleAddContact(contact) {
   }
   model.addContact(contact)
   renderFavoriteStatus()
+  storage.contacts.save(model.getContacts())
   renderContacts(model.getContacts())
 }
 

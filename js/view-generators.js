@@ -148,19 +148,22 @@ function h(tagName, text, attrs, listener, children) {
 }
 
 function generateSearch(contact) {
-  const name = `${contact.firstName} ${contact.secondName}`
+  const name = `${contact.firstName}`
+  const secondName = `${contact.secondName}`
+  const fullname = name + ' ' + secondName
+  console.log(contact.secondName)
   return h(
     'li',
     '',
     { class: 'collection-item avatar' },
-    () => onClickSearchRecentCall(contact.phone, name),
+    () => onClickSearchRecentCall(contact.phone, fullname),
     [
       h('i', 'assessment', { class: 'material-icons circle green' }),
-      h('span', name, { class: 'title' }),
+      h('span', fullname, { class: 'title' }),
       h('p', `${contact.phone}`),
       h('a', '', { class: 'secondary-content' }, null, [
         h('i', 'phone', { class: 'material-icons' }, () =>
-          onClickSearchRecentCall(contact.phone, name)
+          onClickSearchRecentCall(contact.phone, fullname)
         ),
       ]),
     ]
