@@ -39,6 +39,10 @@ function renderModal1EditContact(contact) {
   elButtonSave.innerHTML = 'Сохранить'
   elButtonSave.onclick = onClickEditContactConfirm
   elH5.innerHTML = 'Редактировать контакт'
+
+  setTimeout(() => elInputFirstName.focus(), 100)
+  setTimeout(() => elInputSecondName.focus(), 100)
+  setTimeout(() => elInputPhone.focus(), 100)
 }
 
 function renderFavoriteStatus(isFav) {

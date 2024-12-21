@@ -9,7 +9,7 @@ function handleConfirmUpdateContact(id, newContact) {
   renderFavourite(model.getFavourites())
 }
 function handleSearchContact(searchParam) {
-  const searchedContacts = model.getContactsByQuery(searchParam)
+  const searchedContacts = model.findContactsByQuery(searchParam)
   renderSearch(searchedContacts)
 }
 

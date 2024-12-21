@@ -3,17 +3,16 @@ const model = {
   contacts: [],
   recentCalls: [],
 
-  getContactById(id) {
-    const findedContact = this.contacts.find(c => c.id === id)
-    return findedContact
-  },
-
   getNextId() {
     return ++this.currentId
   },
 
   getContacts() {
     return this.contacts
+  },
+
+  getContactById(id) {
+    return this.contacts.find(c => c.id === id)
   },
 
   getRecentCalls() {
@@ -24,34 +23,24 @@ const model = {
     return this.contacts.filter(contact => contact.isFavourite)
   },
 
-  getContactsByQuery(query) {
-    if (!query) return []
-
-    const lowerCaseQuery = query.toLowerCase()
-
+  findContactsByQuery(query) {
+    if (query === '') return []
     return this.contacts.filter(
       contact =>
-        contact.firstName.toLowerCase().includes(lowerCaseQuery) ||
-        contact.secondName.toLowerCase().includes(lowerCaseQuery) ||
-        contact.phone.toLowerCase().includes(lowerCaseQuery)
+        compareWords(query, contact.firstName) ||
+        compareWords(query, contact.secondName) ||
+        compareWords(query, contact.phone)
     )
   },
 
-  addContactToRecentCallFromFavorite(name) {
+  addRecentCallByPhone(phone) {
+    const findedContact = this.contacts.find(c => c.phone === phone)
     const recentCall = {
-      nameOrPone: name,
+      isFromContacts: !!findedContact,
+      phone: phone,
       timestamp: Date.now(),
       duration: Math.floor(Math.random() * 30) + 1,
-    }
-    this.recentCalls.push(recentCall)
-  },
-
-  addContactToRecentCall(number) {
-    const contact = this.contacts.find(c => c.phone === number)
-    const recentCall = {
-      nameOrPone: contact ? contact.firstName : number,
-      timestamp: Date.now(),
-      duration: Math.floor(Math.random() * 30) + 1,
+      contact: findedContact,
     }
     this.recentCalls.push(recentCall)
   },
@@ -86,11 +75,28 @@ model.addContact({
   phone: '1234567890',
 })
 model.addContact({
-  firstName: 'John2',
-  secondName: 'Rembo2',
+  firstName: 'Corben',
+  secondName: 'Dallas',
   phone: '321',
 })
 
 // model.addContactToRecentCall("1234567890")
 // model.addContactToRecentCall("0987654321")
 console.log(model.recentCalls)
+
+model.addRecentCallByPhone('321')
+console.log(model.recentCalls[0].phone)
+console.log(model.recentCalls[0].contact)
+
+function compareWords(a, b) {
+  return b.toLowerCase().includes(a.toLowerCase())
+}
+
+let fined = model.findContactsByQuery('O2')
+
+console.log(fined.length)
+
+console.log(compareWords('foo', 'foo'))
+console.log(compareWords('foo', 'Foo'))
+console.log(compareWords('Foo', 'Foo'))
+console.log(compareWords('foo', 'bar'))
