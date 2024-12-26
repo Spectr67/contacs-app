@@ -25,13 +25,7 @@ const model = {
   },
 
   findContactsByQuery(query) {
-    if (query === '') return []
-    return this.contacts.filter(
-      contact =>
-        compareWords(query, contact.firstName) ||
-        compareWords(query, contact.secondName) ||
-        compareWords(query, contact.phone)
-    )
+    return findContactsByQueries(queryToArray(query), this.contacts)
   },
 
   addRecentCallByPhone(phone) {
@@ -71,6 +65,37 @@ const model = {
   },
 }
 
+function queryToArray(query) {
+  return query
+    .trim()
+    .split(' ')
+    .filter(q => q !== '')
+}
+
+function findContactsByQueries(queries, contacts) {
+  let findedContacts = []
+  queries.forEach(query => {
+    const result = helper(query, contacts)
+    findedContacts.push(result)
+  })
+  return removeClones(findedContacts.flat())
+}
+
+function helper(query, contacts) {
+  return contacts.filter(
+    contact =>
+      compareWords(query, contact.firstName) ||
+      compareWords(query, contact.secondName) ||
+      compareWords(query, contact.phone)
+  )
+}
+
+function compareWords(a, b) {
+  return b.toLowerCase().includes(a.toLowerCase())
+}
+
+const removeClones = arr => Array.from(new Set(arr))
+
 model.addContact({
   firstName: 'John',
   secondName: 'Rembo',
@@ -90,9 +115,9 @@ model.addContact({
 // console.log(model.recentCalls[0].phone)
 // console.log(model.recentCalls[0].contact)
 
-// function compareWords(a, b) {
-//   return b.toLowerCase().includes(a.toLowerCase())
-// }
+function compareWords(a, b) {
+  return b.toLowerCase().includes(a.toLowerCase())
+}
 
 // let fined = model.findContactsByQuery('O2')
 

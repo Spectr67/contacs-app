@@ -187,7 +187,7 @@ ul > a {
   left: 0px;
 } */
 .block-div {
-  position: absolute;
+  position: fixed;
   z-index: 100;
   width: 350px;
   height: 70px;
@@ -208,6 +208,9 @@ ul > a {
 }
 .block-div-top > button {
   width: 5%;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 .block-div-bot > button {
   width: 50%;
