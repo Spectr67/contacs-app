@@ -1,8 +1,19 @@
+// function onClickOpenBlockDiv () {
+
+// }
+
+function onClickCloseBlockDiv(e) {
+  const elbody = document.querySelector('body')
+  const elDivBlock = e.target.closest('.block-div')
+  console.log(elDivBlock)
+  elbody.removeChild(elDivBlock)
+}
+
 function onClickFavouriteRecentCall(e) {
   const elDivFavorite = e.target.closest('.favorite')
   const elSpanName = elDivFavorite.querySelector('.white-text')
   const favoriteName = elSpanName.textContent
-  handleRecentCallFromFavorite(favoriteName)
+  handleGetRecentCalls(number)
 }
 
 function onClickOpenModalAddContact() {
@@ -35,13 +46,11 @@ function onInputSearch() {
 function onClickDetailRecentCall(e) {
   const elLi = e.currentTarget
   const phoneNumber = elLi.querySelector('span.title').textContent
-  const name = document.querySelector('#modal2 h5').textContent
-  console.log(name)
-  handleGetRecentCalls(phoneNumber, name)
+  handleGetRecentCalls(phoneNumber)
 }
 
-function onClickSearchRecentCall(phoneNumber, name) {
-  handleGetRecentCalls(phoneNumber, name)
+function onClickSearchRecentCall(phoneNumber) {
+  handleGetRecentCalls(phoneNumber)
 }
 
 function onClickContactDetail(e) {

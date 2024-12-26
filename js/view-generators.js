@@ -1,3 +1,35 @@
+const eldivblackmodal = generateBlackListModal()
+const elbody = document.querySelector('body')
+elbody.appendChild(eldivblackmodal)
+
+function generateBlackListModal(number) {
+  const elDivModal = document.createElement('div')
+  const elDivTop = document.createElement('div')
+  const elDivBot = document.createElement('div')
+  const elSpan = document.createElement('span')
+  elSpan.textContent = 'Заблокировать' + ' ' + number
+  const elButtonYes = document.createElement('button')
+  const elButtonNo = document.createElement('button')
+  const elButtonClose = document.createElement('button')
+  elButtonYes.textContent = 'Да'
+  elButtonNo.textContent = 'Нет'
+  elDivModal.appendChild(elDivTop)
+  elDivModal.appendChild(elDivBot)
+  elDivTop.appendChild(elSpan)
+  elDivTop.appendChild(elButtonClose)
+  elDivBot.appendChild(elButtonYes)
+  elDivBot.appendChild(elButtonNo)
+  elDivModal.classList.add('block-div')
+  elDivTop.classList.add('block-div-top')
+  elDivBot.classList.add('block-div-bot')
+  elButtonClose.classList.add('block-close')
+  elButtonClose.textContent = 'X'
+  elButtonYes.onclick
+  elButtonNo.onclick = onClickCloseBlockDiv
+  elButtonClose.onclick = onClickCloseBlockDiv
+  return elDivModal
+}
+
 function generateContactContact(firstName, secondName, id) {
   const elLi = document.createElement('li')
   elLi.onclick = onClickContactDetail
@@ -116,7 +148,7 @@ function generateRecentCall(recentCall) {
   elPhoneIcon.classList.add('material-icons')
 
   elIcon.textContent = 'person'
-  elTitleBold.textContent = recentCall.nameOrPone
+  elTitleBold.textContent = recentCall.contact.firstName
   const seconds = Math.floor((Date.now() - recentCall.timestamp) / 1000)
   elDateIcon.textContent = `${seconds} секунд назад, длительность ${recentCall.duration}`
   recentCall.duration
@@ -151,7 +183,6 @@ function generateSearch(contact) {
   const name = `${contact.firstName}`
   const secondName = `${contact.secondName}`
   const fullname = name + ' ' + secondName
-  console.log(contact.secondName)
   return h(
     'li',
     '',

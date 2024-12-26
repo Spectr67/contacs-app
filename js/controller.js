@@ -14,11 +14,7 @@ function handleSearchContact(searchParam) {
 }
 
 function handleGetRecentCalls(number) {
-  model.addContactToRecentCall(number)
-  renderRecentCalls(model.getRecentCalls())
-}
-function handleRecentCallFromFavorite(name) {
-  model.addContactToRecentCallFromFavorite(name)
+  model.addRecentCallByPhone(number)
   renderRecentCalls(model.getRecentCalls())
 }
 

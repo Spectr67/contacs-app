@@ -186,3 +186,30 @@ ul > a {
   top: -50%;
   left: 0px;
 } */
+.block-div {
+  position: absolute;
+  z-index: 100;
+  width: 350px;
+  height: 70px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #000;
+}
+.block-div > div {
+  height: 35px;
+  width: 100%;
+  border: 1px solid #000;
+}
+.block-div-top > span {
+  width: 85%;
+  display: block;
+  border: 1px solid #000;
+}
+.block-div-top > button {
+  width: 5%;
+}
+.block-div-bot > button {
+  width: 50%;
+  height: 35px;
+}
