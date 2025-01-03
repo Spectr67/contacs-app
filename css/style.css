@@ -190,29 +190,73 @@ ul > a {
   position: fixed;
   z-index: 100;
   width: 350px;
-  height: 70px;
+  height: auto;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border: 1px solid #000;
+  border-radius: 8px; /* Добавляем скругления */
+  background-color: var(--color-background); /* Используем фоновый цвет */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Добавляем тень для глубины */
+  padding: 15px;
+  font-family: Arial, sans-serif;
 }
+
 .block-div > div {
-  height: 35px;
   width: 100%;
-  border: 1px solid #000;
+  padding: 10px;
+  background-color: var(--color-item); /* Используем основной цвет */
+  color: white; /* Белый текст */
+  border-radius: 4px; /* Скругления для содержимого */
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+
 .block-div-top > span {
+  font-size: 18px;
+  font-weight: bold;
   width: 85%;
-  display: block;
-  border: 1px solid #000;
+  display: inline-block;
 }
+
 .block-div-top > button {
-  width: 5%;
-  position: absolute;
-  right: 0;
-  top: 0;
+  background-color: transparent;
+  border: none;
+  color: var(--color-item);
+  font-size: 18px;
+  cursor: pointer;
+  padding: 5px;
+  transition: all 0.3s ease;
 }
+
+.block-div-top > button:hover {
+  color: #fff;
+  background-color: var(--color-item);
+  border-radius: 50%;
+}
+
 .block-div-bot > button {
-  width: 50%;
-  height: 35px;
+  background-color: var(--color-item);
+  color: white;
+  width: 48%;
+  height: 40px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.block-div-bot > button:hover {
+  background-color: darken(var(--color-item), 10%);
+}
+
+.block-div-bot > button:first-child {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.block-div-bot > button:first-child:hover {
+  background-color: #ccc;
 }

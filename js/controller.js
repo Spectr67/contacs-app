@@ -1,3 +1,9 @@
+function handleAddNumberToBlock(number) {
+  model.addContactToBlockByNumber(number)
+  storage.contacts.save(model.contacts)
+  storage.blockedPhones.save(model.blackList)
+}
+
 function handleUpdateContact(id) {
   const contact = model.getContactById(+id)
   renderModal1EditContact(contact)

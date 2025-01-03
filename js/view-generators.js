@@ -1,32 +1,36 @@
-const eldivblackmodal = generateBlackListModal()
-const elbody = document.querySelector('body')
-elbody.appendChild(eldivblackmodal)
-
 function generateBlackListModal(number) {
   const elDivModal = document.createElement('div')
   const elDivTop = document.createElement('div')
   const elDivBot = document.createElement('div')
   const elSpan = document.createElement('span')
-  elSpan.textContent = 'Заблокировать' + ' ' + number
+  const elSpanNumber = document.createElement('span')
+  elSpan.textContent = 'Заблокировать '
+
   const elButtonYes = document.createElement('button')
   const elButtonNo = document.createElement('button')
   const elButtonClose = document.createElement('button')
   elButtonYes.textContent = 'Да'
   elButtonNo.textContent = 'Нет'
+  elButtonClose.textContent = 'X'
+  elSpanNumber.textContent = number
+
   elDivModal.appendChild(elDivTop)
   elDivModal.appendChild(elDivBot)
   elDivTop.appendChild(elSpan)
   elDivTop.appendChild(elButtonClose)
   elDivBot.appendChild(elButtonYes)
   elDivBot.appendChild(elButtonNo)
+  elSpan.appendChild(elSpanNumber)
+
   elDivModal.classList.add('block-div')
   elDivTop.classList.add('block-div-top')
   elDivBot.classList.add('block-div-bot')
   elButtonClose.classList.add('block-close')
-  elButtonClose.textContent = 'X'
-  elButtonYes.onclick
+
+  elButtonYes.onclick = () => onclickAddNumberToBlock(number)
   elButtonNo.onclick = onClickCloseBlockDiv
   elButtonClose.onclick = onClickCloseBlockDiv
+
   return elDivModal
 }
 
@@ -94,6 +98,10 @@ function generateFavouriteCol(favorite) {
   const elCenterAlign = document.createElement('div')
   const elIcon = document.createElement('span')
   const elName = document.createElement('span')
+  const elNumber = document.createElement('input')
+  elNumber.type = 'hidden'
+  elNumber.textContent = favorite.phone
+  elNumber.classList.add('favorite-hidden')
 
   elDivFavorite.classList.add('favorite', 'col', 's6', 'm4', 'l3', 'xl2')
   elCardPanel.classList.add(
@@ -119,6 +127,7 @@ function generateFavouriteCol(favorite) {
   elCenterAlign.appendChild(elIcon)
   elCardPanel.appendChild(elCenterAlign)
   elCardPanel.appendChild(elName)
+  elCardPanel.appendChild(elNumber)
   elDivFavorite.appendChild(elCardPanel)
   elDivFavorite.onclick = onClickFavouriteRecentCall
   return elDivFavorite
@@ -162,7 +171,7 @@ function generateRecentCall(recentCall) {
   elLi.appendChild(elDate)
   elLi.appendChild(elLink)
 
-  elLi.onclick = onClickDetailRecentCall
+  elLi.onclick = e => onClickOpenBlockDiv(recentCall.contact.phone)
 
   return elLi
 }

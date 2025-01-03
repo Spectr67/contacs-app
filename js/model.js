@@ -11,7 +11,9 @@ const model = {
   getContacts() {
     return this.contacts
   },
-
+  getBlacklist() {
+    return this.blackList
+  },
   getContactById(id) {
     return this.contacts.find(c => c.id === id)
   },
@@ -28,6 +30,14 @@ const model = {
     return findContactsByQueries(queryToArray(query), this.contacts)
   },
 
+  addContactToBlockByNumber(phone) {
+    this.contacts.find(contact => contact.phone === phone) &&
+      ((this.contacts = this.contacts.filter(
+        contact => contact.phone !== phone
+      )),
+      this.blackList.push(phone))
+  },
+
   addRecentCallByPhone(phone) {
     const findedContact = this.contacts.find(c => c.phone === phone)
     const recentCall = {
@@ -38,7 +48,6 @@ const model = {
       contact: findedContact,
     }
     this.recentCalls.push(recentCall)
-    console.log(findedContact)
   },
 
   addContact(contact) {

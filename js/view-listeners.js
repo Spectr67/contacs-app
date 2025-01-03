@@ -1,18 +1,27 @@
-// function onClickOpenBlockDiv () {
+function onclickAddNumberToBlock() {
+  const elBlockDiv = document.querySelector('.block-div')
+  const number = elBlockDiv.querySelector('span > span').textContent
+  handleAddNumberToBlock(number)
+  const elbody = document.querySelector('body')
+  const elDivBlock = document.querySelector('.block-div')
+  elbody.removeChild(elDivBlock)
+}
 
-// }
+function onClickOpenBlockDiv(number) {
+  const elDivBlackModal = generateBlackListModal(number)
+  const elBody = document.querySelector('body')
+  elBody.appendChild(elDivBlackModal)
+}
 
 function onClickCloseBlockDiv(e) {
   const elbody = document.querySelector('body')
   const elDivBlock = e.target.closest('.block-div')
-  console.log(elDivBlock)
   elbody.removeChild(elDivBlock)
 }
 
 function onClickFavouriteRecentCall(e) {
   const elDivFavorite = e.target.closest('.favorite')
-  const elSpanName = elDivFavorite.querySelector('.white-text')
-  const favoriteName = elSpanName.textContent
+  const number = elDivFavorite.querySelector('.favorite-hidden').textContent
   handleGetRecentCalls(number)
 }
 
